@@ -19,7 +19,7 @@ def home():
 @site.route('/profile')
 def profile():
 
-    user_now =[]
+    user_now = []
 
     @login_manager.request_loader
     def load_user_from_request(request):
