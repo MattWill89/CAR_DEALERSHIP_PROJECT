@@ -2,8 +2,9 @@ import base64
 import email
 from flask import Blueprint, redirect, render_template 
 from flask_login import current_user, user_logged_in, LoginManager
+from forms import AddCarForm
 
-from models import User
+from models import User, Car
 
 login_manager = LoginManager()
 
@@ -20,6 +21,7 @@ def home():
 def profile():
 
     user_now = []
+    cars = Car.query.all()
 
     @login_manager.request_loader
     def load_user_from_request(request):
@@ -37,8 +39,16 @@ def profile():
 
     if current_user:
 
-        return render_template('profile.html')
+        return render_template('profile.html', cars=cars)
     
     else:
 
         return redirect("/signin")
+    
+
+
+@site.route('/addcar')
+def add_car():
+    form = AddCarForm() 
+
+    return render_template('add_car.html', form=form) 

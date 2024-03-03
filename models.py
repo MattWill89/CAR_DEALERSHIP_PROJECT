@@ -45,6 +45,23 @@ class User(db.Model, UserMixin):
         self.pw_hash = generate_password_hash(password)
         return self.pw_hash
 
+
+class Car(db.Model):
+    serial_number = db.Column(db.String, primary_key=True) #
+    make = db.Column(db.String(150), nullable=True, default='')
+    year = db.Column(db.String(150), nullable = True, default = '')
+    color = db.Column(db.String(150), nullable = False)
+    country = db.Column(db.String, nullable = True, default = '')
+
+    def __init__(self, serial_number, make, year='', color='', country=''):
+        self.serial_number = self.set_id(serial_number)
+        self.make = make
+        self.year = year
+        self.color = color
+        self.country = country
+
+
+
 #    def __repr__(self):
 #        return f'User {self.email} has been added to the database'
     
