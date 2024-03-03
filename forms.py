@@ -20,15 +20,3 @@ class AddCarForm(FlaskForm):
     year = StringField('Year', validators=[DataRequired()])
     color = StringField('Color', validators=[DataRequired()])
     country = StringField('Country of Origin', validators = [DataRequired()])
-
-
-
-# class User(db.Model, UserMixin):
-#     id = db.Column(db.String, primary_key=True) #
-#     first_name = db.Column(db.String(150), nullable=True, default='')
-#     last_name = db.Column(db.String(150), nullable = True, default = '')
-#     email = db.Column(db.String(150), nullable = False)
-#     password = db.Column(db.String, nullable = True, default = '')
-#     g_auth_verify = db.Column(db.Boolean, default = False)
-#     token = db.Column(db.String, default = '', unique = True )
-#     date_created = db.Column(db.DateTime, nullable = False, default = datetime.utcnow)

@@ -58,13 +58,7 @@ class Car(db.Model):
         self.make = make
         self.year = year
         self.color = color
-        self.country = country
-
-
-
-#    def __repr__(self):
-#        return f'User {self.email} has been added to the database'
-    
+        self.country = country    
 class Contact(db.Model):
     id = db.Column(db.String, primary_key = True)
     name = db.Column(db.String(150), nullable = False)

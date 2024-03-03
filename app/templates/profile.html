@@ -1,37 +1,38 @@
 {% extends 'base.html' %}
 {% block content %}
-<body style="background-image: url(../static/images/nicecar2-unsplash.jpg)  ;background-size: cover;
-background-repeat: no-repeat;">
+<body style="background-image: url(../static/images/nicecar2-unsplash.jpg); background-size: cover; background-repeat: no-repeat;">
 <h1 class="m-5 d-flex justify-content-center">This is {{current_user.first_name}}'s profile</h1>
-<div class="car-list">
-    {% if cars %}
-        <table>
-            <tr>
-                <th>Serial Number</th>
-                <th>Make</th>
-                <th>Year</th>
-                <th>Color</th>
-                <th>Country of Origin</th>
-            </tr>
-            {% for car in cars %}
+<div class="container" style="max-width: 600px; margin: auto; padding: 20px; background: rgba(255, 255, 255, 0.7); border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);">
+    <div class="car-list" style="text-align: center;">
+        {% if cars %}
+            <table>
                 <tr>
-                    <td>{{ car.serial_number }}</td>
-                    <td>{{ car.make }}</td>
-                    <td>{{ car.year }}</td>
-                    <td>
-                        <a href="/edit_car/{{ car.serial_number }}">Edit</a>
-                        <a href="/delete_car/{{ car.serial_number }}">Delete</a>
-                    </td>
+                    <th>Serial Number</th>
+                    <th>Make</th>
+                    <th>Year</th>
+                    <th>Color</th>
+                    <th>Country of Origin</th>
                 </tr>
-            {% endfor %}
-        </table>
-    {% else %}
-        <p>No Cars found.</p>
-    {% endif %}
-    <a href="/addcar">Add</a>
+                {% for car in cars %}
+                    <tr>
+                        <td>{{ car.serial_number }}</td>
+                        <td>{{ car.make }}</td>
+                        <td>{{ car.year }}</td>
+                        <td>
+                            <a href="/edit_car/{{ car.serial_number }}">Edit</a>
+                            <a href="/delete_car/{{ car.serial_number }}">Delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% else %}
+            <p>No Cars found.</p>
+        {% endif %}
+        <a href="/addcar">Add</a>
+    </div>
 </div>
 </body>
-{% endblock %} 
+{% endblock %}
 
 
 
@@ -43,33 +44,5 @@ background-repeat: no-repeat;">
 
 
 
-<!-- <style>
-    /* Additional CSS for styling */
-    .picture-container {
-        display: flex;
-        justify-content: center;
-        margin-top: 50px;
-    }
-    
-    .picture {
-        text-align: center;
-    }
-    
-    .picture img {
-        max-width: 100%;
-        max-height: 300px; /* Adjust height as needed */
-    }
-</style>
-
-<body style="background-image: url(../static/images/nicecar2-unsplash.jpg); background-size: cover; background-repeat: no-repeat;">
-    <div class="container">
-        <h1 class="text-center mt-5 mb-3">Welcome to {{ current_user.first_name }}'s Profile</h1>
-        <div class="picture-container">
-            <div class="picture">
-                <img src="../static/images/cardealership1-unsplash.jpg" alt="Centered Picture">
-            </div>
-        </div>
-    </div>
-</body> -->
 
 
