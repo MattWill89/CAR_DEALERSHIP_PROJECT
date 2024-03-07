@@ -20,3 +20,10 @@ class AddCarForm(FlaskForm):
     year = StringField('Year', validators=[DataRequired()])
     color = StringField('Color', validators=[DataRequired()])
     country = StringField('Country of Origin', validators = [DataRequired()])
+
+class EditCarForm(FlaskForm):
+    make = StringField('Make', validators = [DataRequired()])
+    model = StringField('Model', validators = [DataRequired()])
+    year = StringField('Year', validators=[DataRequired()])
+    color = StringField('Color', validators=[DataRequired()])
+    country = StringField('Country of Origin', validators = [DataRequired()])

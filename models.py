@@ -53,12 +53,17 @@ class Car(db.Model):
     color = db.Column(db.String(150), nullable = False)
     country = db.Column(db.String, nullable = True, default = '')
 
-    def __init__(self, serial_number, make, year='', color='', country=''):
-        self.serial_number = self.set_id(serial_number)
+    def __init__(self, make, year='', color='', country=''):
+        self.serial_number = self.set_serial_number()
         self.make = make
         self.year = year
         self.color = color
-        self.country = country    
+        self.country = country 
+
+    def set_serial_number(self):
+        return str(uuid.uuid4())   
+    
+
 class Contact(db.Model):
     id = db.Column(db.String, primary_key = True)
     name = db.Column(db.String(150), nullable = False)

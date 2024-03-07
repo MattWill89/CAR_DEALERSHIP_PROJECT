@@ -12,12 +12,15 @@
                     <th>Year</th>
                     <th>Color</th>
                     <th>Country of Origin</th>
+                    <th>Actions</th>
                 </tr>
                 {% for car in cars %}
                     <tr>
                         <td>{{ car.serial_number }}</td>
                         <td>{{ car.make }}</td>
                         <td>{{ car.year }}</td>
+                        <td>{{ car.color }}</td>
+                        <td>{{ car.country }}</td>
                         <td>
                             <a href="/edit_car/{{ car.serial_number }}">Edit</a>
                             <a href="/delete_car/{{ car.serial_number }}">Delete</a>
