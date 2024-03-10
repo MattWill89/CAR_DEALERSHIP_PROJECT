@@ -60,15 +60,48 @@
         <br><br><br>
         <h2>Edit Car</h2>
 
-        <!-- HTML Attributes -> action, method, id, class -->
-        <form action="addcar" method="POST" id="car_form">
+        <!-- HTML Attributes -> action, method, id, class 
+        
+            make = StringField('Make', validators = [DataRequired()])
+            model = StringField('Model', validators = [DataRequired()])
+            year = StringField('Year', validators=[DataRequired()])
+            color = StringField('Color', validators=[DataRequired()])
+            country = StringField('Country of Origin', validators = [DataRequired()])
+
+        -->
+
+        {{ car.model }}
+
+        <form action="/edit_car/{{car.serial_number}}" method="POST" id="car_form">
             {{ form.hidden_tag() }}
-            {% for field in form if field.widget.input_type != 'hidden' %}
+
+            <div>
+                {{ form.make.label }}
+                {{ form.make(value=car.make) }}
+            </div>
+            <div>
+                {{ form.year.label }}
+                {{ form.year(value=car.year) }}
+            </div>
+            <div>
+                {{ form.color.label }}
+                {{ form.color(value=car.color) }}
+            </div>
+            <div>
+                {{ form.country.label }}
+                {{ form.country(value=car.country) }}
+            </div>
+
+            
+            <!-- {% for field in form if field.widget.input_type != 'hidden' %}
+            
             {% for error in field.errors %}
                 <span class="text-danger">{{ error }}</span>
             {% endfor %}
+
             {{ field(placeholder=field.label.text, class="form-control") }}
-            {% endfor %}
+            
+            {% endfor %} -->
             <br>
             <button type="submit">Update Car Info</button>
         </form>

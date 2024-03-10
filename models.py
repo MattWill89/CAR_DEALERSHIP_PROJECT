@@ -17,7 +17,7 @@ def load_user(user_id):
     return User.query.get(user_id)
 
 class User(db.Model, UserMixin):
-    id = db.Column(db.String, primary_key=True) #
+    id = db.Column(db.String, primary_key=True) 
     first_name = db.Column(db.String(150), nullable=True, default='')
     last_name = db.Column(db.String(150), nullable = True, default = '')
     email = db.Column(db.String(150), nullable = False)
@@ -47,8 +47,9 @@ class User(db.Model, UserMixin):
 
 
 class Car(db.Model):
-    serial_number = db.Column(db.String, primary_key=True) #
+    serial_number = db.Column(db.String, primary_key=True)
     make = db.Column(db.String(150), nullable=True, default='')
+    # model = db.Column(db.String(150), nullable=True, default='')
     year = db.Column(db.String(150), nullable = True, default = '')
     color = db.Column(db.String(150), nullable = False)
     country = db.Column(db.String, nullable = True, default = '')
@@ -56,6 +57,7 @@ class Car(db.Model):
     def __init__(self, make, year='', color='', country=''):
         self.serial_number = self.set_serial_number()
         self.make = make
+        # self.model = model
         self.year = year
         self.color = color
         self.country = country 

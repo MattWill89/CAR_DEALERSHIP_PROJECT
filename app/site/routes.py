@@ -64,7 +64,7 @@ def add_car():
 
     if form.validate_on_submit():
         make = form.make.data
-        model = form.model.data
+        # model = form.model.data
         year = form.year.data
         color = form.color.data
         country = form.country.data
@@ -78,13 +78,23 @@ def add_car():
 
     return render_template('add_car.html', form=form) 
 
-@site.route('/edit_car/<serial_number>')
+@site.route('/edit_car/<serial_number>', methods=['GET', 'POST'])
 def edit_car(serial_number):
 
     form = EditCarForm()
 
     car = Car.query.filter_by(serial_number=serial_number).first()
 
-    print(car)
+    print(form.validate_on_submit())
 
-    return render_template('edit_car.html', form=form)
+    if form.validate_on_submit():
+        car.make = form.make.data
+        car.year = form.year.data
+        car.color = form.color.data
+        car.country = form.country.data
+
+        db.session.commit()
+
+        return redirect(url_for('site.profile'))
+
+    return render_template('edit_car.html', form=form, car=car)
