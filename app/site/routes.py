@@ -98,3 +98,18 @@ def edit_car(serial_number):
         return redirect(url_for('site.profile'))
 
     return render_template('edit_car.html', form=form, car=car)
+
+@site.route('/delete_car/<serial_number>')
+def delete_car(serial_number):
+
+    # Find Car instance based on "serial_number" param
+    car = Car.query.filter_by(serial_number=serial_number).first()
+
+    # Delete the Car instance from the DB session
+    db.session.delete(car)
+
+    # Commit change to DB
+    db.session.commit()
+
+    # Redirect User to "/profile"
+    return redirect(url_for('site.profile'))
